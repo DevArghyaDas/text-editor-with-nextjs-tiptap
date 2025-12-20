@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + Tiptap + Puppeteer
 
-## Getting Started
+This repository demonstrates a compact and practical integration of a modern React-based front-end (Next.js), a headless rich text editor (Tiptap) for content editing, and Puppeteer for server-side rendering of HTML content into PDFs or screenshots.
 
-First, run the development server:
+## Features
+
+- Next.js application with client and server components
+- Tiptap-based rich-text editor with example toolbar and serialization (HTML/JSON)
+- API endpoints using Puppeteer to convert HTML content into PDF or PNG
+- Example workflows: `Save content → Generate PDF` and `Preview as screenshot`
+
+## Tech stack
+
+- **Next.js** — React framework for server-rendered and statically-exported apps
+- **Tiptap** — headless rich text editor (ProseMirror-based)
+- **Puppeteer / puppeteer-core** — headless Chromium for PDF/screenshot generation
+- **Node.js** (recommended LTS)
+
+## Prerequisites
+
+- Node.js 18 or later (LTS recommended)
+- npm or pnpm or bun
+- For production PDF generation on serverless platforms: familiarity with using `puppeteer-core`.
+
+## Development
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# visit http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the editor page, create or paste content, then use the `Export` actions to request a PDF or screenshot from the server.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Generating PDFs / screenshots with Puppeteer
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Notes and best practices:
 
-## Learn More
+- When using `page.setContent`, include minimal CSS to ensure predictable PDF layout (fonts, page width, margins).
+- For complex pages that fetch assets, prefer rendering the page on the server (SSR) or pass absolute URLs to the HTML.
+- On serverless platforms, check platform-specific docs for supported Chromium binaries and cold-start performance.
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+my-project/src
+├─ app/
+│  ├─ index.ts            # landing page, editor UI
+│  ├─ api/
+│  │  ├─ pdf.ts  # example API route using puppeteer
+│  │  └─ snapshot.ts    # (optional) returns PNG
+├─ components/
+│  └─ myUi ->TipTapEditor.tsx          # tiptap editor component
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`MIT LICENSE`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+_End of README._
