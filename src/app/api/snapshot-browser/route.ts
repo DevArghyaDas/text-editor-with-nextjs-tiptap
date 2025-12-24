@@ -11,12 +11,12 @@ export const POST = async (req: Request) => {
     if (!html) return new NextResponse("Missing html", { status: 400 });
 
     // return new NextResponse(html, { status: 200 });
-    const path = process.env.CHROME_EXE_PATH as string;
+    // const path = process.env.CHROME_EXE_PATH as string;
 
     //eslint-disable-next-line
     const launchOptions: any = {
       args: puppeteer.defaultArgs({ args: chromium.args, headless: "shell" }),
-      executablePath: path || (await chromium.executablePath()),
+      executablePath: await chromium.executablePath(),
       headless: "shell",
       ignoreHTTPSErrors: true,
       devtools: false,

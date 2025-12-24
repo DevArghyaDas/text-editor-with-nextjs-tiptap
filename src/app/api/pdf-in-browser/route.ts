@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     if (!html)
       return NextResponse.json({ error: "Missing html" }, { status: 400 });
 
-    const path = process.env.CHROME_EXE_PATH as string;
+    // const path = process.env.CHROME_EXE_PATH as string;
     const viewport = {
       deviceScaleFactor: 1,
       hasTouch: false,
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const launchOptions: any = {
       args: puppeteer.defaultArgs({ args: chromium.args, headless: "shell" }),
       defaultViewport: viewport,
-      executablePath: path || (await chromium.executablePath()),
+      executablePath: await chromium.executablePath(),
       headless: "shell",
       ignoreHTTPSErrors: true,
       devtools: false,
