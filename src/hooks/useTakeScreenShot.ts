@@ -39,7 +39,7 @@ const UseTakeScreenShot = async () => {
            </html>
            `;
 
-  const resp = await fetch("/api/snapshot-browser", {
+  const resp = await fetch("/api/snapshot", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

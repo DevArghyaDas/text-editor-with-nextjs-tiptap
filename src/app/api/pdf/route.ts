@@ -1,37 +1,6 @@
-// pages/api/run-puppeteer.js or app/api/run-puppeteer/route.js
-
 import { NextResponse } from "next/server";
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 
-// export const runtime = "nodejs";
-
-// export const GET = async () => {
-//   // const url = "http://localhost:3000/";
-//   const url = "http://localhost:3000/";
-//   const browser = await puppeteer.launch();
-//   const page = await browser.newPage();
-//   await page.goto(url, {
-//     waitUntil: "networkidle2",
-//   });
-//   const pdf = await page.pdf({
-//     // path: "hn.pdf",
-//     format: "A4",
-//     printBackground: true,
-//     margin: { top: "12mm", bottom: "12mm", left: "12mm", right: "12mm" },
-//   });
-
-//   const pdfBuffer = Buffer.from(pdf);
-
-//   await browser.close();
-//   return new NextResponse(pdfBuffer, {
-//     status: 200,
-//     headers: {
-//       "Content-Type": "application/pdf",
-//       "Content-Disposition": 'inline; filename="document.pdf"',
-//       "Content-Length": pdfBuffer.length.toString(),
-//     },
-//   });
-// };
 export const POST = async (req: Request) => {
   try {
     const body = await req.json();
