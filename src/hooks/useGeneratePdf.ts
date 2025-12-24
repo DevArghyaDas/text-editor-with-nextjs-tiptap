@@ -39,7 +39,7 @@ const UseGeneratePdf = async () => {
       </html>
     `;
 
-  const resp = await fetch("/api/pdf", {
+  const resp = await fetch("/api/pdf-in-browser", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

@@ -1,4 +1,3 @@
-import About from "@/components/myUi/About";
 import TipTapEditor from "@/components/myUi/TipTapEditor";
 import { Metadata } from "next";
 
@@ -10,7 +9,6 @@ export const generateMetadata = (): Metadata => {
 const page = () => {
   return (
     <>
-      <About />
       <TipTapEditor />
     </>
   );
