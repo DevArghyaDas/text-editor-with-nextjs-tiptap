@@ -1,7 +1,7 @@
 // pages/api/run-puppeteer.js or app/api/run-puppeteer/route.js
 
 import { NextResponse } from "next/server";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 
 // export const runtime = "nodejs";
 
